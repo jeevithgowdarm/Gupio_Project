@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Info Card</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="welcome-banner" id="welcome-banner">
+        <div class="welcome-text">Welcome to the Cloudy_Cart</div>
+        <div class="user-welcome" id="user-welcome">Guest</div>
+    </div>
+    <div class="container">
+        <div class="nav-bar">
+            <div class="logo">Cloudy Cart</div>
+            <div class="nav-links">
+                <a href="weather.html" class="active">Weather</a>
+                <a href="map.html">Map</a>
+            </div>
+            <div class="user-info" id="user-info">Welcome, Guest</div>
+            <div class="nav-buttons">
+                <button id="logout-btn" style="display: none;">Logout</button>
+                <a href="index.html" id="login-link">Sign In</a>
+            </div>
+        </div>
+        <div class="weather-card" id="weather-card">
+            <h2 class="location" id="location">New York</h2>
+            <div class="weather-info">
+                <div class="temperature" id="temperature">25°C</div>
+                <div class="condition" id="condition">Sunny</div>
+            </div>
+            <div class="weather-icon" id="weather-icon">
+                <i class="icon-sunny"></i>
+            </div>
+            <div class="buttons">
+                <button id="refresh-btn">Refresh Weather</button>
+                <button id="download-btn">Download Report</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Check if user is logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const userInfo = document.getElementById('user-info');
+            const logoutBtn = document.getElementById('logout-btn');
+            const loginLink = document.getElementById('login-link');
+            const userWelcome = document.getElementById('user-welcome');
+            
+            if (currentUser) {
+                userInfo.textContent = `Welcome, ${currentUser.name}`;
+                userWelcome.textContent = currentUser.name;
+                logoutBtn.style.display = 'inline-block';
+                loginLink.style.display = 'none';
+                
+                // Add logout functionality
+                logoutBtn.addEventListener('click', function() {
+                    localStorage.removeItem('currentUser');
+                    window.location.reload();
+                });
+            }
+
+            // Add animation to weather card
+            const weatherCard = document.getElementById('weather-card');
+            weatherCard.classList.add('animated');
+        });
+    </script>
+</body>
+</html>

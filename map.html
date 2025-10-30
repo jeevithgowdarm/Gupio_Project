@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Map Simulation - Cloudy Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="map-styles.css">
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="logo">Cloudy Cart</div>
+        <div class="nav-links">
+            <a href="weather.html">Weather</a>
+            <a href="map.html" class="active">Map</a>
+        </div>
+        <div class="user-info" id="user-info">Welcome, Guest</div>
+        <div class="nav-buttons">
+            <button id="logout-btn" style="display: none;">Logout</button>
+            <a href="index.html" id="login-link">Sign In</a>
+        </div>
+    </div>
+
+    <div class="welcome-banner" id="welcome-banner">
+        <div class="welcome-text">GPU Weather Map Simulation</div>
+        <div class="user-welcome" id="user-welcome">Guest</div>
+    </div>
+
+    <div class="container">
+        <div class="map-container">
+            <canvas id="map-canvas" width="800" height="600"></canvas>
+            <div class="map-controls">
+                <div class="control-group">
+                    <label for="simulation-type">Simulation Type:</label>
+                    <select id="simulation-type">
+                        <option value="temperature">Temperature</option>
+                        <option value="precipitation">Precipitation</option>
+                        <option value="wind">Wind Speed</option>
+                        <option value="pressure">Pressure</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="simulation-speed">Simulation Speed:</label>
+                    <input type="range" id="simulation-speed" min="1" max="10" value="5">
+                </div>
+                <button id="start-simulation" class="map-button">Start Simulation</button>
+                <button id="pause-simulation" class="map-button">Pause</button>
+                <button id="reset-simulation" class="map-button">Reset</button>
+            </div>
+            <div class="map-info">
+                <div class="info-item">
+                    <span class="info-label">Region:</span>
+                    <span id="region-info">Global</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">GPU Utilization:</span>
+                    <span id="gpu-info">0%</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Particles:</span>
+                    <span id="particle-count">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>
